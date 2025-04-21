@@ -124,7 +124,7 @@ class SelectionState {
         return operationList
     }
 
-    fun recognizeSelection(context: Context, scope: CoroutineScope, page: PageView) {
+    fun recognizeSelection() {
 
     }
 
