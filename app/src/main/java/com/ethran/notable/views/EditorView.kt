@@ -92,7 +92,7 @@ fun EditorView(
             History(scope, page)
         }
         val editorControlTower = remember {
-            EditorControlTower(scope, page, history, editorState)
+            EditorControlTower(scope, page, history, editorState).apply { init(context) }
         }
 
         val appRepository = AppRepository(context)

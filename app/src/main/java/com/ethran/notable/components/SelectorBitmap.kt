@@ -184,7 +184,7 @@ fun SelectedBitmap(
                     ToolbarButton(
                         vectorIcon = FeatherIcons.Crosshair,
                         isSelected = false,
-                        onSelect = { controlTower.recognizeSelection() },
+                        onSelect = { controlTower.recognizeSelection(context) },
                         modifier = Modifier.height(BUTTON_SIZE.dp)
                     )
                 }

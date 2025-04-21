@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Rect
+import android.widget.Toast
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -124,8 +125,34 @@ class SelectionState {
         return operationList
     }
 
-    fun recognizeSelection() {
+    fun recognizeSelection(context: Context) {
+        Log.i(TAG, "recognizing selection.")
 
+        // Access selected strokes and images
+        val strokes = selectedStrokes
+        val images = selectedImages
+
+        // Process strokes (example: log the points)
+        if (!strokes.isNullOrEmpty()) {
+            Log.i(TAG, "Selected strokes:")
+            strokes.forEach { stroke ->
+                Log.i(TAG, "  Stroke ID: ${stroke.id}, Points: ${stroke.points}")
+            }
+        }
+
+        // Process images (example: log image info)
+        if (!images.isNullOrEmpty()) {
+            Log.i(TAG, "Selected images:")
+            images.forEach { image ->
+                Log.i(TAG, "  Image ID: ${image.id}, Position: (${image.x}, ${image.y}), Size: ${image.width}x${image.height}")
+            }
+        }
+
+        // Display a toast to indicate completion
+        Toast.makeText(context, "Recognition process finished", Toast.LENGTH_SHORT).show()
+        // Placeholder for actual recognition code
+        // ... (Your handwriting recognition code will go here later) ...
+        Log.i(TAG,"Recognition process ended")
     }
 
     fun duplicateSelection() {

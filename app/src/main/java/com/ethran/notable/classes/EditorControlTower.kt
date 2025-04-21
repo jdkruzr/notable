@@ -26,6 +26,12 @@ class EditorControlTower(
     val state: EditorState
 ) {
 
+    private lateinit var context: Context
+
+    fun init(context: Context){
+        this.context = context
+    }
+
     fun onSingleFingerVerticalSwipe(startPosition: SimplePointF, delta: Int) {
         if (state.mode == Mode.Select) {
             if (state.selectionState.firstPageCut != null) {
@@ -115,9 +121,9 @@ class EditorControlTower(
         state.selectionState.duplicateSelection()
     }
 
-    fun recognizeSelection() {
-        // state.selectionState.recognizeSelection()
-        showHint("For now, strokes cannot be recognized", scope)
+    fun recognizeSelection(context: Context) {
+        state.selectionState.recognizeSelection(context)
+        showHint("For now, strokes cannot be recognized 2: The Sequel", scope)
     }
 
     fun cutSelectionToClipboard(context: Context) {
