@@ -21,6 +21,7 @@ class EditorState(val bookId: String? = null, val pageId: String, val pageView: 
     var pen by mutableStateOf(persistedEditorSettings?.pen ?: Pen.BALLPEN) // should save
     var eraser by mutableStateOf(persistedEditorSettings?.eraser ?: Eraser.PEN) // should save
     var isDrawing by mutableStateOf(true)
+    var isRecognitionEnabled by mutableStateOf(true)
     var isToolbarOpen by mutableStateOf(
         persistedEditorSettings?.isToolbarOpen ?: false
     ) // should save

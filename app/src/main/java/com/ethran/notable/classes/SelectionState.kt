@@ -124,6 +124,10 @@ class SelectionState {
         return operationList
     }
 
+    fun recognizeSelection(context: Context, scope: CoroutineScope, page: PageView) {
+
+    }
+
     fun duplicateSelection() {
         // set operation to paste only
         placementMode = PlacementMode.Paste

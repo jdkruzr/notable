@@ -37,6 +37,7 @@ import com.ethran.notable.utils.shareBitmap
 import compose.icons.FeatherIcons
 import compose.icons.feathericons.Clipboard
 import compose.icons.feathericons.Copy
+import compose.icons.feathericons.Crosshair
 import compose.icons.feathericons.Scissors
 import compose.icons.feathericons.Share2
 import io.shipbook.shipbooksdk.Log
@@ -113,7 +114,7 @@ fun SelectedBitmap(
 
         // TODO: improve this code
 
-        val buttonCount = if (selectionState.isResizable()) 7 else 5
+        val buttonCount = if (selectionState.isResizable()) 8 else 6
         val toolbarPadding = 4;
 
         // If we can calculate offset of buttons show selection handling tools
@@ -121,7 +122,7 @@ fun SelectedBitmap(
             selectionState.selectionDisplaceOffset?.let { displaceOffset ->
                 // TODO: I think the toolbar is still not in the center.
                 val xPos = selectionState.selectionRect?.let { rect ->
-                    (rect.right - rect.left)/2 - buttonCount * (BUTTON_SIZE + 5* toolbarPadding)
+                    (rect.right - rect.left)/2 - buttonCount * (BUTTON_SIZE + 6* toolbarPadding)
                 } ?: 0
                 val offset = startOffset + displaceOffset + IntOffset(x = xPos, y = -100)
                 // Overlay buttons near the selection box
@@ -178,6 +179,12 @@ fun SelectedBitmap(
                         vectorIcon = FeatherIcons.Copy,
                         isSelected = false,
                         onSelect = { controlTower.duplicateSelection() },
+                        modifier = Modifier.height(BUTTON_SIZE.dp)
+                    )
+                    ToolbarButton(
+                        vectorIcon = FeatherIcons.Crosshair,
+                        isSelected = false,
+                        onSelect = { controlTower.recognizeSelection() },
                         modifier = Modifier.height(BUTTON_SIZE.dp)
                     )
                 }
